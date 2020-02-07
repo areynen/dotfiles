@@ -10,13 +10,12 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-
-exec_always wal -R
+exec_always --no-startup-id cat colors
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Francisco Display 8
-font pango:ShureTechMono Nerd Font Mono 10
+font pango:Source Code Pro 8
+font pango:Symbols Nerd Font 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -40,6 +39,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Microsoft Office Keyboard 1A keys
+bindsym XF86Calculator exec --no-startup-id galculator
+bindsym XF86Explorer exec --no-startup-id thunar
+bindsym Shift+XF86Explorer exec --no-startup-id urxvt -e ranger
+bindsym XF86Mail exec --no-startup-id thunderbird && i3-msg "workspace $ws8"
+bindsym XF86HomePage exec --no-startup-id firefox
+
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -52,6 +59,10 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec rofi -show run
+
+# rofi show all windows
+bindsym $mod+Shift+d exec rofi -show window
+
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -87,6 +98,9 @@ bindsym $mod+h split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+# split tiling
+bindsym $mod+q split toggle
+
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -97,6 +111,9 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# Sticky for floating
+bindsym $mod+Shift+ctrl+space sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -117,8 +134,8 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8. Socials "
-set $ws9 "9. Player 嗢"
-set $ws10 "10. Music "
+set $ws9 "9. Player 磊"
+set $ws10 "10. Music ﱘ"
 set $ws11 "11"
 set $ws12 "12"
 set $ws13 "13"
@@ -179,9 +196,22 @@ assign [instance="cava"] $ws10
 assign [instance="discord"] $ws8
 assign [instance="Mail"] $ws8
 assign [instance="vlc"] $ws9
-assign [instance="VLC"] $ws9
+assign [class="mpv"] $ws9
 
 for_window [class="jetbrains-.*" title="win0"] floating enable
+for_window [title="About Mozilla Firefox"] floating enable
+for_window [title="galculator"] floating enable
+for_window [title="Volume Control"] floating enable
+for_window [title="Bluetooth"] floating enable
+
+#Scratch pad
+exec --no-startup-id urxvt -name pad
+# for_window [instance="pad"] floating_enable
+for_window [instance="pad"] move scratchpad; [instance="pad"] scratchpad show; move scratchpad
+bindsym $mod+c [instance="pad"] scratchpad show
+bindsym $mod+ctrl+c exec --no-startup-id urxvt -name pad
+
+
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -231,7 +261,7 @@ bindsym $mod+r mode "resize"
 # bindsym $mod+shift+z exec i3lock
 
 # Gaps
-gaps inner 5
+gaps inner 4
 gaps outer 0
 # smart_gaps on
 
@@ -243,62 +273,65 @@ hide_edge_borders smart_no_gaps
 
 ## Custom bindings
 # Selection Screenshot
-bindsym --release $mod+shift+s exec maim -s --format png /dev/stdout | xclip -selection clipboard -t image/png -i
+bindsym --release $mod+shift+s exec sh ~/Documents/scripts//rofi_screenshot/scripts/screenshot_selected.sh
 
 # Start Compton on start for effects
-exec_always picom -f
+exec_always--no-startup-id  picom -f
 # Flashfocus for the window switching
 # exec_always --no-startup-id flashfocus
 
 # Key for flashfocus to show current window
-bindsym $mod+n exec --no-startup-id flash_window
+# bindsym $mod+n exec --no-startup-id flash_window
 
 # Key Binding for FF
 bindsym $mod+z exec firefox
 bindsym $mod+Shift+z exec firefox --private-window
 
 # Fix monitors & polybar
-exec /home/alex/Documents/scripts/dualmonitor.sh
+exec --no-startup-id /home/alex/Documents/scripts/dualmonitor.sh
 
 # Stop the pc beep
-exec_always xset -b
+exec_always --no-startup-id xset -b
 
-# Set wallpaper
-exec_always sleep 1; wal -R
+# Set colors
+exec_always --no-startup-id wal --theme ~/theme
 
-# Caffine
-exec_always caffeine &
+# Start utils
+exec_always --no-startup-id caffeine &
+exec --no-startup-id volumeicon &
+exec_always --no-startup-id nm-applet &
+exec_always --no-startup-id sleep 10; urxvtd &
+exec_always --no-startup-id udiskie &
+exec_always --no-startup-id dunst &
+exec_always --no-startup-id parcellite &
+exec --no-startup-id lsblk &
+exec --no-startup-id autotiling &
 
 # Set up music (ws10)
-exec i3-msg "workspace $ws10; append_layout /home/alex/.layouts/layout-MUSICART.json"
-exec lsblk
-exec urxvt -name cmus -e cmus
-exec sleep 1; urxvt -name cava -e cava
-exec ~/.config/cmus/./cover.sh
-exec sleep 1; i3-msg "workspace $ws10"; i3-layout-manager MUSICART
+exec_always --no-startup-id sh ~/Documents/scripts/music.sh
 
 # Open Socials (ws8)
-exec i3-msg "workspace $ws8; append_layout /home/alex/.layouts/layout-SOCIAL.json"
-exec discord
-exec thunderbird
+exec --no-startup-id i3-msg "workspace $ws8; append_layout /home/alex/.layouts/layout-SOCIAL.json"
+exec --no-startup-id discord
+exec --no-startup-id thunderbird
 
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
-
 # Open i3 in editor
-bindsym $mod+i exec vscodium ~/.config/i3/config
+bindsym $mod+i exec geany ~/.config/i3/config
 
-# Thunar Shortcut
+# File Browser Shortcut
 bindsym $mod+t exec thunar
+bindsym $mod+Shift+t exec urxvt -e ranger
 
-# vscodium Shortcut
-bindsym $mod+x exec vscodium
+# geany Shortcut
+bindsym $mod+x exec geany
 
 ## Monitors
 # One
-bindsym $mod+o exec /home/alex/Documents/scripts/monomonitor.sh
+bindsym $mod+o exec --no-startup-id /home/alex/Documents/scripts/monomonitor.sh
 # Two
-bindsym $mod+shift+o exec /home/alex/Documents/scripts/dualmonitor.sh
+bindsym $mod+shift+o exec --no-startup-id /home/alex/Documents/scripts/dualmonitor.sh
  
 # dtest
 bindsym $mod+m exec /home/alex/Documents/scripts/dtest.sh
@@ -318,7 +351,7 @@ set_from_resource $bg i3wm.color1 #f0f0f0
 # class                 border  backgr. text indicator child_border
 # class                 border  backgr. text    indicator child_border
 client.focused          $bg     #4c7899 #ffffff #4c7899   #4c7899
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.focused_inactive #222222 #222222 #ffffff #222222   #222222
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
