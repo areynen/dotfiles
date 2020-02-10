@@ -154,7 +154,7 @@ function _update_ps1() {
 
 # run neofetch at start
 clear
-neofetch
+pfetch
 
 eval "$(thefuck --alias)"
 
