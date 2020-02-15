@@ -221,8 +221,6 @@ bindsym $mod+r mode "resize"
 #-------------------------#
 # Starting apps and utils
 #-------------------------#
-# No sleep
-exec_always --no-startup-id caffeine &
 # Volume icon for pulse audio
 exec --no-startup-id volumeicon &
 # Network Manager applet
