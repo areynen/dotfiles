@@ -87,6 +87,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Allow for back and forth
+workspace_auto_back_and_forth yes
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -236,7 +239,7 @@ exec_always --no-startup-id dunst &
 # Clipboard Manager
 exec_always --no-startup-id parcellite &
 # Used for tiling in spiral
-exec --no-startup-id autotiling &
+exec_always --no-startup-id autotiling &
 # Compositor for transparency and effects
 exec_always--no-startup-id  picom -f
 # Setting up 2 monitors and polybar
@@ -261,21 +264,25 @@ hide_edge_borders none
 # Custom Key Bindings
 #---------------------#
 # Selection Screenshot
-bindsym --release $mod+shift+s exec sh ~/Documents/scripts//rofi_screenshot/scripts/screenshot_selected.sh
+bindsym --release $mod+shift+s exec --no-startup-id sh ~/Documents/scripts/rofi_screenshot/scripts/screenshot_selected.sh
 # Key Binding for FF and FF private
-bindsym $mod+z exec firefox
-bindsym $mod+Shift+z exec firefox --private-window
+bindsym $mod+z exec --no-startup-id firefox
+bindsym $mod+Shift+z exec --no-startup-id firefox --private-window
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
 # Open i3 in editor
-bindsym $mod+i exec geany ~/.config/i3/config
+bindsym $mod+i exec --no-startup-id geany ~/.config/i3/config
 # File Browser Shortcut
-bindsym $mod+t exec thunar
-bindsym $mod+Shift+t exec urxvt -e ranger
+bindsym $mod+t exec --no-startup-id thunar
+bindsym $mod+Shift+t exec --no-startup-id urxvt -e ranger
 # geany Shortcut
-bindsym $mod+x exec geany
-#rofimoji
-bindsym $mod+Tab exec rofimoji
+bindsym $mod+x exec --no-startup-id geany
+# rofimoji
+bindsym $mod+Tab exec --no-startup-id rofimoji
+# Music
+bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music.sh
+# Music
+bindsym $mod+Shift+n exec --no-startup-id ~/Documents/scripts/socials.sh
 
 #---------------------#
 # Monitor Keybindings

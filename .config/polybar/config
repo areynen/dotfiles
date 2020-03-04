@@ -70,6 +70,8 @@ height = 16
 fixed-center = false
 bottom = true
 
+tray-position=none
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -94,7 +96,6 @@ modules-left = i3
 modules-center = 
 modules-right = date
 
-tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 

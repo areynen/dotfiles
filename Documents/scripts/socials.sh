@@ -14,7 +14,6 @@ i3-msg "workspace $ws8"
 i3-layout-manager SOCIAL
 i3-msg "exec --no-startup-id discord"
 i3-msg "exec --no-startup-id thunderbird"
-i3-msg "workspace $ws8"
 sleep .5
 
 i3-msg "workspace $ws1"
