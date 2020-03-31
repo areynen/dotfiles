@@ -11,7 +11,7 @@ font pango:Symbols Nerd Font 10
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -38,7 +38,7 @@ bindsym $mod+Shift+q kill
 
 # start rofi as my dmenu alternative
 # bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -combi-modi run#drun -show combi -modi combi
 
 # rofi show all active windows
 bindsym $mod+Shift+d exec rofi -show window
@@ -237,13 +237,15 @@ exec --no-startup-id lsblk &
 # Notifications
 exec_always --no-startup-id dunst &
 # Clipboard Manager
-exec_always --no-startup-id parcellite &
+exec_always --no-startup-id parcellite -n &
+# Caffeine
+exec_always --no-startup-id caffeine &
 # Used for tiling in spiral
 exec_always --no-startup-id autotiling &
 # Compositor for transparency and effects
 exec_always--no-startup-id  picom -f
 # Setting up 2 monitors and polybar
-exec --no-startup-id /home/alex/Documents/scripts/dualmonitor.sh
+exec --no-startup-id /home/alex/Documents/scripts/dualmonitor_offset.sh
 # Applying theme
 exec_always --no-startup-id wal --theme ~/theme
 # No pc beep
@@ -255,10 +257,12 @@ exec_always --no-startup-id xset -b
 # Gaps
 gaps inner 4
 gaps outer 0
+smart_gaps on
 
 # Titlebar & border
 for_window [class="^.*"] border pixel 3
 hide_edge_borders none
+smart_borders no_gaps
 
 #---------------------#
 # Custom Key Bindings
@@ -290,13 +294,13 @@ bindsym $mod+Shift+n exec --no-startup-id ~/Documents/scripts/socials.sh
 # One
 bindsym $mod+o exec --no-startup-id /home/alex/Documents/scripts/monomonitor.sh
 # Two
-bindsym $mod+shift+o exec --no-startup-id /home/alex/Documents/scripts/dualmonitor.sh
+bindsym $mod+shift+o exec --no-startup-id /home/alex/Documents/scripts/dualmonitor_offset.sh
 
 #---------------------------#
 # Custom WorkSpaces on Boot
 #---------------------------#
 # Set up music (ws10) (cmus, cava, coverart script)
-exec_always --no-startup-id sh ~/Documents/scripts/music.sh
+exec --no-startup-id sh ~/Documents/scripts/music.sh
 
 # Open Socials (ws8) (discord, thunderbird)
 exec --no-startup-id i3-msg "workspace $ws8; append_layout /home/alex/.layouts/layout-SOCIAL.json"
