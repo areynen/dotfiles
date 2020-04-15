@@ -48,9 +48,7 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;2
-font-1 = pango:Source Code Pro:size=10:antialias=false;10
-font-2 = Symbols Nerd Font:style=Bold:size=10;2
-font-3 = Siji:pixelsize=10
+font-1 = SauceCodePro Nerd Font Mono:style=Regular:size=10:antialias=false;2
 
 modules-left = i3
 modules-center = 
@@ -88,9 +86,7 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;2
-font-1 = pango:Source Code Pro:size=10:antialias=false;10
-font-2 = Symbols Nerd Font:style=Bold:size=10;2
-font-3 = Siji:pixelsize=10
+font-1 = SauceCodePro Nerd Font Mono:style=Regular:size=10:antialias=false;2
 
 modules-left = i3
 modules-center = 
