@@ -6,19 +6,17 @@
 set $mod Mod4
 
 # Font for window titles. Mostly useless as I disable the bar
-font pango:Source Code Pro 8
-font pango:Symbols Nerd Font 10
+font pango:SauceCodePro Nerd Font Mono 8
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor --nofork
 
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Microsoft Office Keyboard 1A keys
 bindsym XF86Calculator exec --no-startup-id galculator
@@ -229,9 +227,9 @@ exec --no-startup-id volumeicon &
 # Network Manager applet
 exec_always --no-startup-id nm-applet &
 # Deamon for URXVT
-exec_always --no-startup-id sleep 10; urxvtd &
+exec --no-startup-id sleep 10; urxvtd &
 # Auto mounter and taking care of drives and whatnot
-exec_always --no-startup-id udiskie &
+exec --no-startup-id udiskie &
 # Mounting disks and such
 exec --no-startup-id lsblk &
 # Notifications
@@ -239,7 +237,7 @@ exec_always --no-startup-id dunst &
 # Clipboard Manager
 exec_always --no-startup-id parcellite -n &
 # Caffeine
-exec_always --no-startup-id caffeine &
+# exec_always --no-startup-id caffeine &
 # Used for tiling in spiral
 exec_always --no-startup-id autotiling &
 # Compositor for transparency and effects
@@ -263,6 +261,11 @@ smart_gaps on
 for_window [class="^.*"] border pixel 3
 hide_edge_borders none
 smart_borders no_gaps
+
+# bar
+#bar {
+#  status_command i3blocks
+#}
 
 #---------------------#
 # Custom Key Bindings
