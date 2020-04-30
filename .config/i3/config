@@ -4,6 +4,7 @@
 
 # Setting my mod key to the super key
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Mostly useless as I disable the bar
 font pango:SauceCodePro Nerd Font Mono 8
@@ -288,8 +289,13 @@ bindsym $mod+x exec --no-startup-id geany
 bindsym $mod+Tab exec --no-startup-id rofimoji
 # Music
 bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music.sh
-# Music
+# Social
 bindsym $mod+Shift+n exec --no-startup-id ~/Documents/scripts/socials.sh
+# Music Hotkeys
+bindsym $mod+$alt+Down exec --no-startup-id cmus-remote -u &
+bindsym $mod+$alt+Right exec --no-startup-id cmus-remote -n &
+bindsym $mod+$alt+Left exec --no-startup-id cmus-remote -r &
+
 
 #---------------------#
 # Monitor Keybindings
