@@ -40,8 +40,8 @@ URxvt.url-select.underline: true
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 
 !resize-font
-URxvt.resize-font.smaller: C-Up
-URxvt.resize-font.bigger:  C-Down
+URxvt.resize-font.smaller: A-Up
+URxvt.resize-font.bigger:  A-Down
 
 !Matcher
 URxvt.url-launcher:	firefox
