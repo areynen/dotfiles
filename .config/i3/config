@@ -6,6 +6,9 @@
 set $mod Mod4
 set $alt Mod1
 
+# Setting terminal
+set $term st 
+
 # Font for window titles. Mostly useless as I disable the bar
 font pango:SauceCodePro Nerd Font Mono 8
 
@@ -22,7 +25,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Microsoft Office Keyboard 1A keys
 bindsym XF86Calculator exec --no-startup-id galculator
 bindsym XF86Explorer exec --no-startup-id thunar
-bindsym Shift+XF86Explorer exec --no-startup-id urxvt -e ranger
+bindsym Shift+XF86Explorer exec --no-startup-id $term -e ranger
 bindsym XF86Mail exec --no-startup-id thunderbird && i3-msg "workspace $ws8"
 bindsym XF86HomePage exec --no-startup-id firefox
 
@@ -30,17 +33,12 @@ bindsym XF86HomePage exec --no-startup-id firefox
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec --no-startup-id $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start rofi as my dmenu alternative
-# bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -combi-modi run#drun -show combi -modi combi
-
-# rofi show all active windows
-bindsym $mod+Shift+d exec rofi -show window
+bindsym $mod+d exec --no-startup-id sh ~/Documents/scripts/dmenu_run_history.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -178,10 +176,10 @@ for_window [title="Bluetooth"] floating enable
 #--------------------------------#
 # Setting up scratchpad terminal 
 #--------------------------------#
-exec --no-startup-id urxvt -name pad
+exec --no-startup-id $term -n pad
 for_window [instance="pad"] move scratchpad; [instance="pad"] scratchpad show; move scratchpad
 bindsym $mod+c [instance="pad"] scratchpad show
-bindsym $mod+ctrl+c exec --no-startup-id urxvt -name pad
+bindsym $mod+ctrl+c exec --no-startup-id $term -n pad
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -228,7 +226,7 @@ exec --no-startup-id volumeicon &
 # Network Manager applet
 exec_always --no-startup-id nm-applet &
 # Deamon for URXVT
-exec --no-startup-id sleep 10; urxvtd &
+# exec --no-startup-id sleep 10; urxvtd &
 # Auto mounter and taking care of drives and whatnot
 exec --no-startup-id udiskie &
 # Mounting disks and such
@@ -282,11 +280,11 @@ bindsym $mod+p move workspace to output right
 bindsym $mod+i exec --no-startup-id geany ~/.config/i3/config
 # File Browser Shortcut
 bindsym $mod+t exec --no-startup-id thunar
-bindsym $mod+Shift+t exec --no-startup-id urxvt -e ranger
+bindsym $mod+Shift+t exec --no-startup-id $term -e ranger
 # geany Shortcut
 bindsym $mod+x exec --no-startup-id geany
-# rofimoji
-bindsym $mod+Tab exec --no-startup-id rofimoji
+# Dmenu Emoji picker
+bindsym $mod+Tab exec --no-startup-id ~/Documents/scripts/dmenu-emoji.sh
 # Music
 bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music.sh
 # Social
