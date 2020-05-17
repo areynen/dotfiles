@@ -17,8 +17,12 @@ source $ZSH/oh-my-zsh.sh
 eval $(thefuck --alias)
 
 # Binding alt arrows to l/r word
+# urxvt
 bindkey "\e$terminfo[kcub1]" backward-word
 bindkey "\e$terminfo[kcuf1]" forward-word
+# ST
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
 
 # Aliases
 alias ls="ls --color=auto"
@@ -31,6 +35,9 @@ alias mv='mv -i'
 
 alias config='/usr/bin/git --git-dir=/home/alex/dotfiles/ --work-tree=/home/alex'
 alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
+
+alias vi3=vim\ ~/.config/i3/config
+alias vzsh=vim\ ~/.zshrc
 
 # Functions
 # ex - archive extractor
@@ -65,7 +72,7 @@ export VISUAL=vim
 export PATH=$PATH:/home/alex/Documents/scripts
 
 # On term Start
-clear
+#clear
 pfetch
 
 # For Z
