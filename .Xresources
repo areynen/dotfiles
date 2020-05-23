@@ -10,7 +10,6 @@ URxvt.cursorBlink: False
 
 !Transparency
 URxvt.depth: 20
-URxvt.background: #000000
 
 ! Border
 !URxvt.internalBorder: 5 
@@ -19,13 +18,7 @@ URxvt*imLocale: en_US.UTF-8
 URxvt*termName: rxvt-unicode-256color
 Urxvt*buffered: false
 URxvt.intensityStyles: false
-URxvt.font: xft:SauceCodePro Nerd Font Mono:size=12, \
-            xft:DejaVuSansMono Nerd Font:size=12, \
-            xft:DroidSansMono Nerd Font:size=12, \
-            xft:FuraMono Nerd Font:size=12, \
-            xft:RobotoMono Nerd Font:size=12, \
-            xft:Noto Sans Mono:size=12, \
-            xft:Monospace:style=Medium:size=12   
+URxvt.font: xft:SauceCodePro Nerd Font Mono:size=12
 
 !Extensions
 URxvt.perl-ext-common: default,matcher,resize-font,url-select,keyboard-select,clipboard
