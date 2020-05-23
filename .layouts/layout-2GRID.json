@@ -1,0 +1,86 @@
+[
+{
+	"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"percent": null,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "normal",
+			"floating": "auto_off",
+			"layout": "splith",
+			"percent": 1,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "normal",
+				"floating": "auto_off",
+				"layout": "splitv",
+				"percent": 0.5,
+				"type": "con",
+				"nodes": [
+				{
+					"border": "pixel",
+					"current_border_width": 3,
+					"floating": "auto_off",
+					"geometry": {
+						"height": 532,
+						"width": 884,
+						"x": 0,
+						"y": 0
+					},
+					"name": "Mozilla Firefox",
+					"percent": 1,
+					"swallows": [
+					{
+						"instance": "",
+					}
+					],
+					"type": "con"
+				}
+				]
+			},
+			{
+				"border": "normal",
+				"floating": "auto_off",
+				"layout": "splitv",
+				"percent": 0.5,
+				"type": "con",
+				"nodes": [
+				{
+					"border": "normal",
+					"floating": "auto_off",
+					"layout": "splitv",
+					"percent": 1,
+					"type": "con",
+					"nodes": [
+					{
+						"border": "pixel",
+						"current_border_width": 3,
+						"floating": "auto_off",
+						"geometry": {
+							"height": 532,
+							"width": 884,
+							"x": 0,
+							"y": 0
+						},
+						"name": "./layoutmanager.sh",
+						"percent": 1,
+						"swallows": [
+						{
+							"instance": "",
+						}
+						],
+						"type": "con"
+					}
+					]
+				}
+				]
+			}
+			]
+		}
+	]
+}
+]
