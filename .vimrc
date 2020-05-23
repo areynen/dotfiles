@@ -8,3 +8,6 @@ set ignorecase
 " Setting syntax highlighting
 syntax on
 
+
+" Update sxhkd when saving the config file
+    autocmd BufWritePost *sxhkdrc !killall sxhkd; cd ~; setsid sxhkd &

@@ -11,7 +11,7 @@ ws1="1"
 ws8="8. Socials "
 
 i3-msg "workspace $ws8"
-i3-layout-manager SOCIAL
+layoutmanager.sh SOCIAL
 i3-msg "exec --no-startup-id discord"
 i3-msg "exec --no-startup-id thunderbird"
 sleep .5

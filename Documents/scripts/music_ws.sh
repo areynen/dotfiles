@@ -18,10 +18,10 @@ ws10="10. Music ﱘ"
 i3-msg "workspace $ws10"
 i3-layout-manager MUSICART
 i3-msg "exec --no-startup-id lsblk"
-i3-msg "exec --no-startup-id urxvt -name cmus -e cmus"
-i3-msg "exec --no-startup-id urxvt -name cava -e cava"
+i3-msg "exec --no-startup-id st -n cmus -e cmus"
+i3-msg "exec --no-startup-id st -n cava -e cava"
 i3-msg "exec --no-startup-id ~/.config/cmus/./cover.sh"
 sleep 1
-i3-layout-manager MUSICART
+layoutmanager.sh MUSICART
 
 #i3-msg "workspace $ws1"
