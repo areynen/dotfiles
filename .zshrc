@@ -38,6 +38,9 @@ alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,
 
 alias vi3=vim\ ~/.config/i3/config
 alias vzsh=vim\ ~/.zshrc
+alias vdwm=vim\ ~/Documents/dwm/config.h
+alias vhk=vim\ ~/.config/sxhkd/sxhkdrc
+alias vvim=vim\ ~/.vimrc
 
 # Functions
 # ex - archive extractor
@@ -63,10 +66,20 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+exprop()
+{
+xprop | awk '
+    /^WM_CLASS/{sub(/.* =/, "instance:"); sub(/,/, "\nclass:"); print}
+    /^WM_NAME/{sub(/.* =/, "title:"); print}'
+}
 
 # Exports
 export EDITOR=vim
 export VISUAL=vim
+export TERMINAL=st
+export FILE_BROWSER=thunar
+export BROWSER=firefox
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Path modifications
 export PATH=$PATH:/home/alex/Documents/scripts

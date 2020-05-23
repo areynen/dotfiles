@@ -270,23 +270,23 @@ smart_borders no_gaps
 # Custom Key Bindings
 #---------------------#
 # Selection Screenshot
-bindsym --release $mod+shift+s exec --no-startup-id sh ~/Documents/scripts/rofi_screenshot/scripts/screenshot_selected.sh
+bindsym --release $mod+shift+s exec --no-startup-id screenshot_selected.sh
 # Key Binding for FF and FF private
 bindsym $mod+z exec --no-startup-id firefox
 bindsym $mod+Shift+z exec --no-startup-id firefox --private-window
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
 # Open i3 in editor
-bindsym $mod+i exec --no-startup-id geany ~/.config/i3/config
+bindsym $mod+i exec --no-startup-id code ~/.config/i3/config
 # File Browser Shortcut
 bindsym $mod+t exec --no-startup-id thunar
 bindsym $mod+Shift+t exec --no-startup-id $term -e ranger
-# geany Shortcut
-bindsym $mod+x exec --no-startup-id geany
+# Key Shortcut
+bindsym $mod+x exec --no-startup-id code
 # Dmenu Emoji picker
 bindsym $mod+Tab exec --no-startup-id ~/Documents/scripts/dmenu-emoji.sh
 # Music
-bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music.sh
+bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music_ws.sh
 # Social
 bindsym $mod+Shift+n exec --no-startup-id ~/Documents/scripts/socials.sh
 # Music Hotkeys

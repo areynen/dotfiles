@@ -1,0 +1,18 @@
+super + Return 
+    $TERMINAL
+super + z
+    $BROWSER
+super + shift + z
+    $BROWSER --private-window
+super + t
+    thunar 
+super + d
+    dmenu_run_history.sh
+super + shift + t
+    st -c "ranger" -e ranger
+super + shift + s
+    screenshot_full.sh  
+super + alt + {Down, Left, Right}
+    mpc {toggle, prev, next}
+super + alt + Up
+    pavucontrol
