@@ -109,6 +109,11 @@ handle_extension() {
             python -m json.tool -- "${FILE_PATH}" && exit 5
             ;;
 
+        ## Music tags 
+        mp3|flac|m4a)
+            ffprobe -v quiet -print_format default -show_format ${FILE_PATH} | awk -F: '/TAG/ {print $2}' && exit 5
+            ;;
+
         ## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected
         ## by file(1).
         dff|dsf|wv|wvc)
