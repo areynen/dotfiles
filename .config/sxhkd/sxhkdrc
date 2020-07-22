@@ -1,18 +1,34 @@
 super + Return 
     $TERMINAL
-super + z
-    $BROWSER
-super + shift + z
-    $BROWSER --private-window
+super + { ,shift} + z 
+    $BROWSER { ,--private-window}
 super + t
     thunar 
 super + d
-    dmenu_run_history.sh
+    run_recent.sh
 super + shift + t
-    st -c "ranger" -e ranger
+    $TERMINAL -c "ranger" -e ranger
+super + q 
+    $TERMINAL -c "htop" -e htop
+super + s
+    screenshot_selected.sh  
 super + shift + s
     screenshot_full.sh  
-super + alt + {Down, Left, Right}
-    mpc {toggle, prev, next}
+super + control + s
+    ocr.sh  
+super + alt + {Down,Left,Right}
+    mpc {toggle,prev,next}; pkill -RTMIN+2 dwmblocks
 super + alt + Up
     pavucontrol
+{_,shift} + XF86Audio{Lower,Raise}Volume
+    pactl set-sink-volume @DEFAULT_SINK@ {-5,-1,+5,+1}%
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+{_,shift} + XF86Explorer
+    {$FILES, $TERMINAL -c "ranger" -e ranger}
+XF86Calculator
+    galculator
+XF86Mail
+    thunderbird
+{ ,shift} + XF86HomePage
+    $BROWSER { ,--private-window}
