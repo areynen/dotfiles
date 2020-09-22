@@ -2,6 +2,8 @@ super + Return
     $TERMINAL
 super + { ,shift} + z 
     $BROWSER { ,--private-window}
+super + control + z
+    searchcopied.sh
 super + t
     thunar 
 super + d
@@ -10,12 +12,8 @@ super + shift + t
     $TERMINAL -c "ranger" -e ranger
 super + q 
     $TERMINAL -c "htop" -e htop
-super + s
-    screenshot_selected.sh  
-super + shift + s
-    screenshot_full.sh  
-super + control + s
-    ocr.sh  
+super + { ,shift,control,alt} +  s
+    {screenshot_selected.sh,screenshot_full.sh,ocr.sh,openlatest.sh}  
 super + alt + {Down,Left,Right}
     mpc {toggle,prev,next}; pkill -RTMIN+2 dwmblocks
 super + alt + Up
