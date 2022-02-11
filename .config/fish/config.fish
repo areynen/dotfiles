@@ -1,6 +1,6 @@
 thefuck --alias | source 
 
-install_fisher="curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+alias install_fisher="curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
 
 alias vim=nvim
 
