@@ -4,6 +4,10 @@ set relativenumber
 set expandtab
 set tabstop=4
 set ignorecase
+set smartcase
+set clipboard+=unnamedplus
+
+set wildmode=longest,list,full
 
 " Setting syntax highlighting
 syntax on
