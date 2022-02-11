@@ -9,8 +9,11 @@ alias cp="cp -i"
 alias rm="rm -i"
 alias mv='mv -i'
 
-alias config='/usr/bin/git --git-dir=/home/alex/dotfiles/ --work-tree=/home/alex'
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+alias confighidden='/usr/bin/git --git-dir=$HOME/dotfiles_hidden/ --work-tree=$HOME'
 alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
+
+alias l="ls -alh"
 
 alias vi3=vim\ ~/.config/i3/config
 alias vzsh=vim\ ~/.zshrc
