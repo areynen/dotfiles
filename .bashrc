@@ -16,7 +16,7 @@ colors() {
 	for fgc in {30..37}; do
 		# background colors
 		for bgc in {40..47}; do
-			fgc=${fgc#37} # white
+		fgc=${fgc#37} # white
 			bgc=${bgc#40} # black
 
 			vals="${fgc:+$fgc;}${bgc}"
@@ -153,8 +153,8 @@ function _update_ps1() {
 # cat ~/.cache/wal/sequences
 
 # run neofetch at start
-clear
-pfetch
+#clear
+#pfetch
 
 eval "$(thefuck --alias)"
 
@@ -164,3 +164,4 @@ eval "$(thefuck --alias)"
 
 
 [[ -r /usr/share/z/z.sh ]] && source /usr/share/z/z.sh
+
