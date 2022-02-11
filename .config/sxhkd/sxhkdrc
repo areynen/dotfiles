@@ -39,9 +39,9 @@ super + {_,shift} + n
 super + { ,shift,alt} + o
     {mono.sh, dual-offset-home.sh, trio-offset-home.sh}
 super + {_,shift,control,alt} +  s
-    {screenshot_selected.sh,screenshot_full.sh,ocr.sh,openlatest.sh}  
+    {screenshot_selected,screenshot_full,ocr,openlatest}  
 super + shift + alt + s
-    openlatest.sh -s
+    openlatest -s
 super + alt + {Down,Left,Right}
     mpc {toggle,prev,next}; blocks_update 2
 super + alt + shift + {Left,Right,Down}
