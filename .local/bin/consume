@@ -1,0 +1,62 @@
+#!/bin/sh
+
+# -d | --delete included means delete (-d) (--delete) (shift 1)
+# -s | --sort included means sort (-s) (--sort) (shift 1)
+# -f | --file follows is file (-f <file>) (--file <file>) (shift 2) (-f=<file>) (--file=<file>) (shift 1)
+
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+  -d | --delete)
+    delete=1
+    shift 1
+    ;;
+  -s | --sort)
+    sort=1
+    shift 1
+    ;;
+    #TODO Need some validation it's a file
+  -f | --file)
+    file="$2"
+    shift 2
+    ;;
+  -*)
+    echo "unknown option: $1" >&2
+    exit 1
+    ;;
+  *)
+    handle_argument "$1"
+    shift 1
+    ;;
+  esac
+done
+
+# echo "delete: $delete"
+# echo "sort: $sort"
+# echo "file: $file"
+
+if [ -z "$file" ]; then
+  echo "Need file"
+  exit 1
+fi
+
+timestamp=$(date '+%s')
+tmp="/tmp/$timestamp"
+# echo $tmp
+
+if [ -n "$sort" ]; then
+  selected=$(sort -V "$file" | dmenu -i -l 20 -p "Consume": "$@")
+else
+  selected=$(dmenu -i -l 20 -p "Consume": "$@" <"$file")
+fi
+
+runner=$(echo "$selected" | awk -F ';' '{ print $NF }')
+to_run=$(echo "$selected" | awk -F ';' '{ print $1 }')
+
+# echo runner: $runner to_run: $to_run
+
+$runner "$to_run" || exit 1
+
+if [ -n "$delete" ]; then
+  grep -vF "$selected" "$file" >"$tmp"
+  mv "$tmp" "$file"
+fi

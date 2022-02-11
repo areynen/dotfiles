@@ -1,0 +1,7 @@
+#!/bin/bash
+copied=$(xclip -selection c -o)
+if [[ $copied = http?(s)://*.* ]]; then
+    $BROWSER "$copied"
+else
+    $BROWSER --search "$(xclip -selection c -o)"
+fi
