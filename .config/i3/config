@@ -1,44 +1,28 @@
 # i3 config
 # Modified from the defaults, inspired by much tweaking
-# Living config file
+
 
 # Setting my mod key to the super key
 set $mod Mod4
 set $alt Mod1
-
-# Setting terminal
 set $term st 
+exec startup.sh &
 
+# Set colors from Xresources
+set_from_resource $fg color8 #f0f0f0
+set_from_resource $bg color0 #f0f0f0
 # Font for window titles. Mostly useless as I disable the bar
-font pango:SauceCodePro Nerd Font Mono 8
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy-multimonitor --nofork
-
-# Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# Microsoft Office Keyboard 1A keys
-bindsym XF86Calculator exec --no-startup-id galculator
-bindsym XF86Explorer exec --no-startup-id thunar
-bindsym Shift+XF86Explorer exec --no-startup-id $term -e ranger
-bindsym XF86Mail exec --no-startup-id thunderbird && i3-msg "workspace $ws8"
-bindsym XF86HomePage exec --no-startup-id firefox
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id $term
+#bindsym $mod+Return exec --no-startup-id $term
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec --no-startup-id sh ~/Documents/scripts/dmenu_run_history.sh
+#bindsym $mod+d exec --no-startup-id sh ~/Documents/scripts/dmenu_run_history.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -65,30 +49,40 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split tiling toggling
-bindsym $mod+q split toggle
+bindsym $mod+Tab split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # Allow for back and forth
 workspace_auto_back_and_forth yes
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
+#set $ws1 ""
+#set $ws2 ""
+#set $ws3 ""
+#set $ws4 ""
+#set $ws5 ""
+#set $ws6 ""
+#set $ws7 ""
+#set $ws8 ""
+#set $ws9 ""
+#set $ws10 "-"
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -96,19 +90,9 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8. Socials "
-set $ws9 "9. Player 磊"
-set $ws10 "10. Music ﱘ"
-set $ws11 "11"
-set $ws12 "12"
-set $ws13 "13"
-set $ws14 "14"
-set $ws15 "15"
-set $ws16 "16"
-set $ws17 "17"
-set $ws18 "18"
-set $ws19 "19"
-set $ws20 "20"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -121,16 +105,6 @@ bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
-bindsym $mod+ctrl+1 workspace number $ws11
-bindsym $mod+ctrl+2 workspace number $ws12
-bindsym $mod+ctrl+3 workspace number $ws13
-bindsym $mod+ctrl+4 workspace number $ws14
-bindsym $mod+ctrl+5 workspace number $ws15
-bindsym $mod+ctrl+6 workspace number $ws16
-bindsym $mod+ctrl+7 workspace number $ws17
-bindsym $mod+ctrl+8 workspace number $ws18
-bindsym $mod+ctrl+9 workspace number $ws19
-bindsym $mod+ctrl+0 workspace number $ws20
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -143,50 +117,70 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-bindsym $mod+ctrl+Shift+1 move container to workspace number $ws11
-bindsym $mod+ctrl+Shift+2 move container to workspace number $ws12
-bindsym $mod+ctrl+Shift+3 move container to workspace number $ws13
-bindsym $mod+ctrl+Shift+4 move container to workspace number $ws14
-bindsym $mod+ctrl+Shift+5 move container to workspace number $ws15
-bindsym $mod+ctrl+Shift+6 move container to workspace number $ws16
-bindsym $mod+ctrl+Shift+7 move container to workspace number $ws17
-bindsym $mod+ctrl+Shift+8 move container to workspace number $ws18
-bindsym $mod+ctrl+Shift+9 move container to workspace number $ws19
-bindsym $mod+ctrl+Shift+0 move container to workspace number $ws20
 
 #------------------------------------------------#
 # Setting up apps to open in specific workspaces 
 #------------------------------------------------#
-assign [instance="cmus"] $ws10
-assign [instance="cava"] $ws10
-assign [instance="discord"] $ws8
-assign [instance="Mail"] $ws8
-assign [instance="vlc"] $ws9
-assign [class="mpv"] $ws9
+# assign [instance="cmus"] $ws10
+# assign [instance="cava"] $ws10
+# assign [instance="discord"] $ws8
+# assign [instance="Mail"] $ws8
+# assign [instance="vlc"] $ws9
+# assign [class="mpv"] $ws9
+# 1 - Terminal
+assign [class="St" instance="st"] $ws1
+assign [class="newsboat" instance="st"] $ws1
+# 2 - Web
+assign [class="firefox"] $ws2
+# 3 - Code/IDE (not vim)
+assign [class="code-oss"] $ws3
+# 4 - Files
+assign [class="Thunar"] $ws4
+assign [class="ranger"] $ws4
+assign [class="JDownloader"] $ws4
+# 5 - Office/Other Editors
+assign [instance="libreoffice"] $ws5
+assign [title="LibreOffice"] $ws5
+assign [class="Gimp"] $ws5
+assign [class="Inkscape"] $ws5
+# 6 - Games
+assign [class="Steam" instance="Steam"] $ws6
+assign [class="Lutris"] $ws6
+assign [class="retroarch"] $ws6
+assign [instance="multimc"] $ws6
+# 7 - Video
+assign [class="mpv"] $ws7
+# 8 - Music
+assign [class="ncmpcpp"] $ws8
+# 9 - Social
+assign [class="discord"] $ws9
+assign [class="Disocrd Updater"] $ws9
+assign [class="Thunderbird"] $ws9
 
 #----------------------------------------------#
 # Setting up apps to open as a floating window
 #----------------------------------------------#
 for_window [class="jetbrains-.*" title="win0"] floating enable
-for_window [title="About Mozilla Firefox"] floating enable
-for_window [title="galculator"] floating enable
-for_window [title="Volume Control"] floating enable
-for_window [title="Bluetooth"] floating enable
+for_window [class="firefox" instance="browser" title="About Mozilla Firefox"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="fehfloat" instance="feh"] floating enable
+for_window [class="Gpick"] floating enable
 
 #--------------------------------#
 # Setting up scratchpad terminal 
 #--------------------------------#
 exec --no-startup-id $term -n pad
 for_window [instance="pad"] move scratchpad; [instance="pad"] scratchpad show; move scratchpad
-bindsym $mod+c [instance="pad"] scratchpad show
-bindsym $mod+ctrl+c exec --no-startup-id $term -n pad
+bindsym $mod+grave [instance="pad"] scratchpad show
+bindsym $mod+$alt+grave exec --no-startup-id $term -n pad
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -222,31 +216,31 @@ bindsym $mod+r mode "resize"
 # Starting apps and utils
 #-------------------------#
 # Volume icon for pulse audio
-exec --no-startup-id volumeicon &
+# exec --no-startup-id volumeicon &
 # Network Manager applet
-exec_always --no-startup-id nm-applet &
+# exec_always --no-startup-id nm-applet &
 # Deamon for URXVT
 # exec --no-startup-id sleep 10; urxvtd &
 # Auto mounter and taking care of drives and whatnot
-exec --no-startup-id udiskie &
+#exec --no-startup-id udiskie &
 # Mounting disks and such
-exec --no-startup-id lsblk &
+#exec --no-startup-id lsblk &
 # Notifications
-exec_always --no-startup-id dunst &
+#exec_always --no-startup-id dunst &
 # Clipboard Manager
-exec_always --no-startup-id parcellite -n &
+# exec_always --no-startup-id parcellite -n &
 # Caffeine
 # exec_always --no-startup-id caffeine &
 # Used for tiling in spiral
-exec_always --no-startup-id autotiling &
+#exec_always --no-startup-id autotiling &
 # Compositor for transparency and effects
-exec_always--no-startup-id  picom -f
+#exec_always--no-startup-id  picom -f
 # Setting up 2 monitors and polybar
-exec --no-startup-id /home/alex/Documents/scripts/dualmonitor_offset.sh
+#exec --no-startup-id /home/alex/Documents/scripts/dualmonitor_offset.sh
 # Applying theme
-exec_always --no-startup-id wal --theme ~/theme
+# exec_always --no-startup-id wal --theme ~/theme
 # No pc beep
-exec_always --no-startup-id xset -b
+#exec_always --no-startup-id xset -b
 
 #------------#
 # Apperances 
@@ -262,76 +256,87 @@ hide_edge_borders none
 smart_borders no_gaps
 
 # bar
-#bar {
-#  status_command i3blocks
-#}
+bar {
+    font pango:DejaVu Sans 10
+    position top
+    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+colors {
+    background  $bg
+    statusline  $fg
+    focused_workspace $bg $fg $bg
+    active_workspace $fg $bg $fg
+    }
+}
 
 #---------------------#
 # Custom Key Bindings
 #---------------------#
 # Selection Screenshot
-bindsym --release $mod+shift+s exec --no-startup-id screenshot_selected.sh
+#bindsym --release $mod+shift+s exec --no-startup-id screenshot_selected.sh
 # Key Binding for FF and FF private
-bindsym $mod+z exec --no-startup-id firefox
-bindsym $mod+Shift+z exec --no-startup-id firefox --private-window
+#bindsym $mod+z exec --no-startup-id firefox
+#bindsym $mod+Shift+z exec --no-startup-id firefox --private-window
 # Moving workspaces between screens 
-bindsym $mod+p move workspace to output right
+#bindsym $mod+p move workspace to output right
 # Open i3 in editor
-bindsym $mod+i exec --no-startup-id code ~/.config/i3/config
+#bindsym $mod+i exec --no-startup-id code ~/.config/i3/config
 # File Browser Shortcut
-bindsym $mod+t exec --no-startup-id thunar
-bindsym $mod+Shift+t exec --no-startup-id $term -e ranger
+#bindsym $mod+t exec --no-startup-id thunar
+#bindsym $mod+Shift+t exec --no-startup-id $term -e ranger
 # Key Shortcut
-bindsym $mod+x exec --no-startup-id code
+#bindsym $mod+x exec --no-startup-id code
 # Dmenu Emoji picker
-bindsym $mod+Tab exec --no-startup-id ~/Documents/scripts/dmenu-emoji.sh
+#bindsym $mod+Tab exec --no-startup-id ~/Documents/scripts/dmenu-emoji.sh
 # Music
-bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music_ws.sh
+#bindsym $mod+n exec --no-startup-id ~/Documents/scripts/music_ws.sh
 # Social
-bindsym $mod+Shift+n exec --no-startup-id ~/Documents/scripts/socials.sh
+#bindsym $mod+Shift+n exec --no-startup-id ~/Documents/scripts/socials.sh
 # Music Hotkeys
-bindsym $mod+$alt+Down exec --no-startup-id cmus-remote -u &
-bindsym $mod+$alt+Right exec --no-startup-id cmus-remote -n &
-bindsym $mod+$alt+Left exec --no-startup-id cmus-remote -r &
+#bindsym $mod+$alt+Down exec --no-startup-id cmus-remote -u &
+#bindsym $mod+$alt+Right exec --no-startup-id cmus-remote -n &
+#bindsym $mod+$alt+Left exec --no-startup-id cmus-remote -r &
 
 
 #---------------------#
 # Monitor Keybindings
 #---------------------#
 # One
-bindsym $mod+o exec --no-startup-id /home/alex/Documents/scripts/monomonitor.sh
+#bindsym $mod+o exec --no-startup-id /home/alex/Documents/scripts/monomonitor.sh
 # Two
-bindsym $mod+shift+o exec --no-startup-id /home/alex/Documents/scripts/dualmonitor_offset.sh
+#bindsym $mod+shift+o exec --no-startup-id /home/alex/Documents/scripts/dualmonitor_offset.sh
 
 #---------------------------#
 # Custom WorkSpaces on Boot
 #---------------------------#
 # Set up music (ws10) (cmus, cava, coverart script)
-exec --no-startup-id sh ~/Documents/scripts/music.sh
+# exec --no-startup-id sh ~/Documents/scripts/music.sh
 
 # Open Socials (ws8) (discord, thunderbird)
-exec --no-startup-id i3-msg "workspace $ws8; append_layout /home/alex/.layouts/layout-SOCIAL.json"
-exec --no-startup-id discord
-exec --no-startup-id thunderbird
+# exec --no-startup-id i3-msg "workspace $ws8; append_layout /home/alex/.layouts/layout-SOCIAL.json"
+# exec --no-startup-id discord
+# exec --no-startup-id thunderbird
 
 #---------------#
 # Temp Workings
 #---------------#
 # dtest (dunst testing script for configing)
-bindsym $mod+m exec /home/alex/Documents/scripts/dtest.sh
+#bindsym $mod+m exec /home/alex/Documents/scripts/dtest.sh
 
 #--------------#
 # Color for i3
 #--------------#
-# Set colors from Xresources
-set_from_resource $fg i3wm.color7 #f0f0f0
-set_from_resource $bg i3wm.color1 #f0f0f0
 
 # class                 border  backgr. text indicator child_border
 # class                 border  backgr. text    indicator child_border
-client.focused          $bg     #4c7899 #ffffff #4c7899   #4c7899
+#client.focused          $bg     #4c7899 #ffffff #4c7899   #4c7899
+#client.focused_inactive #222222 #222222 #ffffff #222222   #222222
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#client.background       $bg
+client.focused          $fg $fg $fg $fg $fg
 client.focused_inactive #222222 #222222 #ffffff #222222   #222222
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #ffffff
+client.background       $bg $bg $bg $bg $bg
