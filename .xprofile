@@ -1,6 +1,0 @@
-export EDITOR=vim
-export VISUAL=vim
-export TERMINAL=st
-export FILES=thunar
-export BROWSER=firefox
-
