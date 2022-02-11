@@ -2,20 +2,52 @@ super + Return
     $TERMINAL
 super + { ,shift} + z 
     $BROWSER { ,--private-window}
+super + alt + { ,shift} + z
+    chromium { ,--incognito}
 super + control + z
     searchcopied.sh
+super + alt + q
+    xkill
+super + shift + alt + q
+    kill_current
+super + g
+    gimp
+super + w
+    jdownloader
 super + t
     thunar 
 super + d
-    run_recent.sh
+    dmenu_run
+super + v
+    clipmenu -i -l 20
+super + c
+    consume.sh -s -d -f $HOME/Documents/scripts/to_consume.txt
+super + shift + c
+    consume.sh -f $HOME/Documents/scripts/to_consume_long.txt
 super + shift + t
     $TERMINAL -c "ranger" -e ranger
 super + q 
     $TERMINAL -c "htop" -e htop
-super + { ,shift,control,alt} +  s
+super + {_,shift} + m
+    {$TERMINAL -c "neomutt" -e neomutt, updatemail.sh}
+super + {_,shift} + u
+    {$TERMINAL -c "ncmpcpp" -e ncmpcpp,ario}
+super + p
+    passmenu-otp
+super + {_,shift} + n 
+    {$TERMINAL -c "newsboat" -e newsboat && blocks_update 3, updatenews.sh}
+super + { ,shift,alt} + o
+    {monomonitor.sh, dualmonitor_offset.sh, triomointor_offset.sh}
+super + {_,shift,control,alt} +  s
     {screenshot_selected.sh,screenshot_full.sh,ocr.sh,openlatest.sh}  
+super + shift + alt + s
+    openlatest.sh -s
 super + alt + {Down,Left,Right}
-    mpc {toggle,prev,next}; pkill -RTMIN+2 dwmblocks
+    mpc {toggle,prev,next}; blocks_update 2
+super + alt + shift + {Left,Right,Down}
+    mpc volume {-5,+5,50}
+super + alt + shift + Up
+    mpcnotify.sh
 super + alt + Up
     pavucontrol
 {_,shift} + XF86Audio{Lower,Raise}Volume
@@ -27,6 +59,8 @@ XF86AudioMute
 XF86Calculator
     galculator
 XF86Mail
-    thunderbird
+    $TERMINAL -c "neomutt" -e neomutt
 { ,shift} + XF86HomePage
     $BROWSER { ,--private-window}
+super + {shift,control} + grave
+    dunstctl {history-pop,close}
