@@ -1,0 +1,21 @@
+include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
+reload-threads 20
+macro Y set browser "mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
+macro y set browser "mpv --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
+macro n save "/tmp/tmp.txt"; set browser "~/.config/newsboat/mangaparsedl.sh" ; open-in-browser-and-mark-read ; set browser #BROWSER
+macro f set browser "feh" ; open-in-browser-and-mark-read ; set browser $BROWSER
+macro z set browser "$BROWSER" ; open-in-browser-and-mark-read
+macro t set browser "youtube-dl %u --get-duration --get-description; read REPLY" ; open-in-browser ; set browser $BROWSER
+macro T set browser "mpv --no-video --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
+macro l set browser "lynx" ; open-in-browser-and-mark-read ; set browser $BROWSER
+bind-key U show-urls
+bookmark-autopilot yes
+bookmark-cmd "~/.config/newsboat/bookcopy.sh"
+bookmark-interactive yes
+
+# Match only English for mangadex
+ignore-article "*" "content !~ \"English\" and rssurl =~ \"https://mangadex.org/rss/\""
+ignore-article "*" "content !~ \"TV.*俺、つしま\" and rssurl == \"https://www.youtube.com/feeds/videos.xml?channel_id=UCBuAshczy8ouqLU_H381row\"
+ignore-article "*" "title =~ \"Episode .*Impressions\" and rssurl == \"https://www.youtube.com/feeds/videos.xml?channel_id=UCKbS6TTiig4CX9bosyoc28Q\"
+
+ignore-mode "download"
