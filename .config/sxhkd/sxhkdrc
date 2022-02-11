@@ -5,7 +5,7 @@ super + { ,shift} + z
 super + alt + { ,shift} + z
     chromium { ,--incognito}
 super + control + z
-    searchcopied.sh
+    searchcopied
 super + alt + q
     xkill
 super + shift + alt + q
@@ -21,9 +21,9 @@ super + d
 super + v
     clipmenu -i -l 20
 super + c
-    consume.sh -s -d -f $HOME/Documents/scripts/to_consume.txt
+    consume -s -d -f $HOME/.local/bin/to_consume.txt
 super + shift + c
-    consume.sh -f $HOME/Documents/scripts/to_consume_long.txt
+    consume -f $HOME/.local/bin/to_consume_long.txt
 super + shift + t
     $TERMINAL -c "ranger" -e ranger
 super + q 
