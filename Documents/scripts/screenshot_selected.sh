@@ -1,5 +1,0 @@
-#!/usr/bin/sh
-save=$HOME"/Pictures/screenshots/copied.png"
-maim -s -u $save
-cat $save | xclip -selection clipboard -t image/png
-screenshot_notify.sh

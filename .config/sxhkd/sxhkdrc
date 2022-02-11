@@ -37,7 +37,7 @@ super + p
 super + {_,shift} + n 
     {$TERMINAL -c "newsboat" -e newsboat && blocks_update 3, updatenews.sh}
 super + { ,shift,alt} + o
-    {monomonitor.sh, dualmonitor_offset.sh, triomointor_offset.sh}
+    {mono.sh, dual-offset-home.sh, trio-offset-home.sh}
 super + {_,shift,control,alt} +  s
     {screenshot_selected.sh,screenshot_full.sh,ocr.sh,openlatest.sh}  
 super + shift + alt + s
