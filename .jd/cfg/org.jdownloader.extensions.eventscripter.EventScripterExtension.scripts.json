@@ -9,7 +9,7 @@
   "eventTrigger" : "ON_DOWNLOAD_CONTROLLER_STOPPED",
   "enabled" : true,
   "name" : "Add to consume list when done downloading",
-  "script" : "//Add your script here. Feel free to use the available api properties and methods\nif (link.isFinished() == true) {\n    var sourceFile = link.getDownloadPath();\n    if (sourceFile.indexOf(\"mkv\") != -1) {\n        if (sourceFile.indexOf(\"mkv.0\") != -1 && sourceFile.indexOf(\"mkv.001\") == -1) {\n        }\n        else {\n            writeFile(\"/home/alex/Documents/scripts/to_consume.txt\", sourceFile.replace(\"mkv.001\",\"mkv\") + \";mpv\\n\", true);    \n        }\n    }\n}",
+  "script" : "//Add your script here. Feel free to use the available api properties and methods\nif (link.isFinished() == true) {\n    var sourceFile = link.getDownloadPath();\n    if (sourceFile.indexOf(\"mkv\") != -1) {\n        if (sourceFile.indexOf(\"mkv.0\") != -1 && sourceFile.indexOf(\"mkv.001\") == -1) {\n        }\n        else {\n            writeFile(\"/home/alex/.local/bin/to_consume.txt\", sourceFile.replace(\"mkv.001\",\"mkv\") + \";mpv\\n\", true);    \n        }\n    }\n}",
   "eventTriggerSettings" : {
     "isSynchronous" : false
   },

@@ -16,6 +16,6 @@ else
 fi
 dir=$(awk '/\/home\/alex\/Manga/ {print}' /tmp/tmp.txt)
 if [ "$dir" != "" ];then
-    echo "$dir;manga_read.sh" >> /home/alex/Documents/scripts/to_consume.txt
+    echo "$dir;manga_read.sh" >> /home/alex/.local/bin/to_consume.txt
 fi
 rm $temp
