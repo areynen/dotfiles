@@ -21,9 +21,11 @@ pgrep -x clipmenud >/dev/null || clipmenud &
 if (pgrep -x dwm)
 then
     blocks_program="dwmblocks"
+    dwmblocks &
 elif (pgrep -x i3)
 then
     blocks_program="i3blocks"
+    i3blocks &
 else
     exit
 fi

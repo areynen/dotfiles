@@ -14,6 +14,7 @@ alias confighidden='/usr/bin/git --git-dir=$HOME/dotfiles_hidden/ --work-tree=$H
 alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
 
 alias l="ls -alh"
+alias code="vscodium"
 
 alias vi3=vim\ ~/.config/i3/config
 alias vzsh=vim\ ~/.zshrc
@@ -33,6 +34,8 @@ alias cq=code\ ~/.config/newsboat/RSSQueryMaker.txt
 alias cqn=code\ ~/.config/newsboat/RSSQueryMakerNyaa.txt
 alias mpv480="mpv --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
 alias mpv360="mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
+alias ytfzf480="ytfzf --ytdl-pref='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
+alias ytfzf360="ytfzf --ytdl-pref='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
 alias cx=chmod\ +x
 alias yay=paru
 

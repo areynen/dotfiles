@@ -1,5 +1,7 @@
 include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
 reload-threads 20
+macro U set browser "umpv-runner.sh 360" ; open-in-browser-and-mark-read ; set browser $BROWSER
+macro u set browser "umpv-runner.sh 480" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro Y set browser "mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro y set browser "mpv --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro n save "/tmp/tmp.txt"; set browser "~/.config/newsboat/mangaparsedl.sh" ; open-in-browser-and-mark-read ; set browser #BROWSER
