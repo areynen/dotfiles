@@ -3,7 +3,7 @@
 pgrep -x lxpolkit >/dev/null || lxpolkit &
 # Wallpaper
 # feh --bg-scale ~/Pictures/wallpaper_new.png &
-hsetroot -solid "#282828"
+sleep 1 & hsetroot -solid "#282828"
 # Setting screens
 ~/.screenlayout/dual-offset-home.sh
 # Theme
@@ -32,11 +32,13 @@ fi
 # sxhkd startup
 pgrep -x sxhkd >/dev/null || sxhkd &
 # MPD
-mpd &
+# mpd &
+mopidy &
 pgrep -x mpdscribble >/dev/null || mpdscribble &
 # Unclutter to remove the mouse
 pgrep -x unclutter >/dev/null || unclutter --jitter 1 --ignore-scrolling &
 # Stop PC Beep
-xset -b
-
+xset -b &
+xmodmap ~/.xmodmaprc &
+jellyfin-mpv-shim &
 disown

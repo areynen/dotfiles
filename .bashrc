@@ -33,16 +33,6 @@ colors() {
 
 [ -r /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
 
-# Change the window title of X terminals
-case ${TERM} in
-	xterm*|rxvt*|Eterm*|aterm|kterm|gnome*|interix|konsole*)
-		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\007"'
-		;;
-	screen*)
-		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/\~}\033\\"'
-		;;
-esac
-
 use_color=true
 
 # Set colorful PS1 only on colorful terminals.
@@ -156,8 +146,6 @@ function _update_ps1() {
 #clear
 #pfetch
 
-eval "$(thefuck --alias)"
-
  VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
  alias config='/usr/bin/git --git-dir=/home/alex/dotfiles/ --work-tree=/home/alex'
  alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
@@ -165,3 +153,20 @@ eval "$(thefuck --alias)"
 
 [[ -r /usr/share/z/z.sh ]] && source /usr/share/z/z.sh
 
+-eval "$(thefuck --alias)"
+
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba init' !!
+export MAMBA_EXE="/home/alex/.micromamba/bin/micromamba";
+export MAMBA_ROOT_PREFIX="/home/alex/micromamba";
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    if [ -f "/home/alex/micromamba/etc/profile.d/micromamba.sh" ]; then
+        . "/home/alex/micromamba/etc/profile.d/micromamba.sh"
+    else
+        export  PATH="/home/alex/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
+    fi
+fi

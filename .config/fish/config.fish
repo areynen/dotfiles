@@ -32,12 +32,14 @@ alias vtc=vim\ ~/.local/bin/to_consume.txt
 alias vtcl=vim\ ~/.local/bin/to_consume_long.txt
 alias cq=code\ ~/.config/newsboat/RSSQueryMaker.txt
 alias cqn=code\ ~/.config/newsboat/RSSQueryMakerNyaa.txt
+alias cqfs=code\ ~/.config/newsboat/RSSQueryMakerNyaaFS.txt
 alias mpv480="mpv --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
 alias mpv360="mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
 alias ytfzf480="ytfzf --ytdl-pref='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
 alias ytfzf360="ytfzf --ytdl-pref='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
 alias cx=chmod\ +x
 alias yay=paru
+alias reflect="sudo reflector --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 
 function ex
   set ext zip rar bz2 gz tar tbz2 tgz Z 7z xz exe tar.bz2 tar.gz tar.xz lzma cbz
@@ -131,3 +133,4 @@ if status is-login
         exec startx 
     end
 end
+

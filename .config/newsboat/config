@@ -4,6 +4,7 @@ macro U set browser "umpv-runner.sh 360" ; open-in-browser-and-mark-read ; set b
 macro u set browser "umpv-runner.sh 480" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro Y set browser "mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro y set browser "mpv --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/worst'" ; open-in-browser-and-mark-read ; set browser $BROWSER
+macro i set browser "mpv --sid=no" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro n save "/tmp/tmp.txt"; set browser "~/.config/newsboat/mangaparsedl.sh" ; open-in-browser-and-mark-read ; set browser #BROWSER
 macro f set browser "feh" ; open-in-browser-and-mark-read ; set browser $BROWSER
 macro z set browser "$BROWSER" ; open-in-browser-and-mark-read
@@ -15,9 +16,15 @@ bookmark-autopilot yes
 bookmark-cmd "~/.config/newsboat/bookcopy.sh"
 bookmark-interactive yes
 
+
+
+urls-source "freshrss"
+freshrss-url "http://192.168.1.165:8280/api/greader.php"
+freshrss-login "alex"
+freshrss-passwordfile "/home/alex/.config/newsboat/freshrss-password"
+freshrss-show-special-feeds no
+
 # Match only English for mangadex
 ignore-article "*" "content !~ \"English\" and rssurl =~ \"https://mangadex.org/rss/\""
-ignore-article "*" "content !~ \"TV.*俺、つしま\" and rssurl == \"https://www.youtube.com/feeds/videos.xml?channel_id=UCBuAshczy8ouqLU_H381row\"
-ignore-article "*" "title =~ \"Episode .*Impressions\" and rssurl == \"https://www.youtube.com/feeds/videos.xml?channel_id=UCKbS6TTiig4CX9bosyoc28Q\"
 
 ignore-mode "download"

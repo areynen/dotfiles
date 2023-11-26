@@ -17,9 +17,9 @@ lyrics_directory = ~/.lyrics
 #
 ##### connection settings #####
 #
-#mpd_host = localhost
+mpd_host = localhost
 #
-#mpd_port = 6600
+mpd_port = 6600
 #
 #mpd_connection_timeout = 5
 #
@@ -44,6 +44,7 @@ mpd_music_dir = ~/Music
 ## }
 ##
 #
+visualizer_data_source = "localhost:5555"
 visualizer_fifo_path = /tmp/mpd.fifo
 #
 ##
@@ -218,7 +219,7 @@ message_delay_time = 3
 ## browser_sort_mode are "name", "mtime", "format" and "noop".
 ##
 #
-#browser_sort_mode = name
+browser_sort_mode = name
 #
 #browser_sort_format = {%a - }{%t}|{%f} {(%l)}
 #
@@ -465,7 +466,7 @@ mouse_list_scroll_whole_page = yes
 ##       database and local one for searching in current playlist)
 ##
 #
-#search_engine_default_search_mode = 1
+search_engine_default_search_mode = 1
 #
 #external_editor = nano
 #
