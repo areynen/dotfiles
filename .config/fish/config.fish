@@ -9,18 +9,19 @@ alias cp="cp -i"
 alias rm="rm -i"
 alias mv='mv -i'
 
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
-alias confighidden='/usr/bin/git --git-dir=$HOME/dotfiles_hidden/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias confighidden='/usr/bin/git --git-dir=$HOME/.cfg_hidden/ --work-tree=$HOME'
 alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
 
 alias l="ls -alh"
-alias code="vscodium"
+alias code="codium"
 
 alias vi3=vim\ ~/.config/i3/config
 alias vzsh=vim\ ~/.zshrc
 alias vdwm=vim\ ~/Documents/dwm/config.h
 alias vhk=vim\ ~/.config/sxhkd/sxhkdrc
-alias vvim=vim\ ~/.vimrc
+#alias vvim=vim\ ~/.vimrc
+alias vvim=vim\ ~/.config/nvim/init.vim
 alias vdunst=vim\ ~/.config/dunst/dunstrc
 alias vmpv=vim\ ~/.config/mpv/mpv.conf
 alias vfish=vim\ ~/.config/fish/config.fish
@@ -38,8 +39,24 @@ alias mpv360="mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+besta
 alias ytfzf480="ytfzf --ytdl-pref='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
 alias ytfzf360="ytfzf --ytdl-pref='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
 alias cx=chmod\ +x
-alias yay=paru
-alias reflect="sudo reflector --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+#alias yay=paru
+#alias reflect="sudo reflector --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+
+function yay
+    if test (count $argv) -eq 0
+        sudo nala upgrade
+    else
+        set cmd $argv[1]
+        switch $cmd
+            case autopurge autoremove clean fetch history install list purge remove search show update upgrade
+                nala $argv
+            case help
+                nala
+            case '*'
+                sudo nala install $argv
+        end
+    end
+end
 
 function ex
   set ext zip rar bz2 gz tar tbz2 tgz Z 7z xz exe tar.bz2 tar.gz tar.xz lzma cbz
@@ -112,7 +129,7 @@ export BROWSER "librewolf"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export SUDO_ASKPASS="dmenupass.sh"
 
-set PATH $PATH /home/alex/Documents/scripts /home/alex/.emacs.d/bin /home/alex/.local/bin /home/alex/.screenlayout
+set PATH $PATH /home/alex/Documents/scripts /home/alex/.emacs.d/bin /home/alex/.local/bin /home/alex/.screenlayout /home/alex/.local/share/bob/nvim-bin
 
 switch $TERM
     case 'st-*' # suckless' simple terminal
