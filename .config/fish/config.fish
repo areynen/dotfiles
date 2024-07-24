@@ -1,4 +1,4 @@
-alias install_fisher="curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher PatrickF1/fzf.fish franciscolourenco/done jethrokuan/z oh-my-fish/plugin-thefuck oh-my-fish/plugin-bang-bang"
+alias install_fisher="curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher PatrickF1/fzf.fish franciscolourenco/done jethrokuan/z oh-my-fish/plugin-thefuck oh-my-fish/plugin-bang-bang jorgebucaran/autopair.fish meaningful-ooo/sponge danhper/fish-ssh-agent"
 
 alias vim=nvim
 
@@ -48,8 +48,10 @@ function yay
     else
         set cmd $argv[1]
         switch $cmd
-            case autopurge autoremove clean fetch history install list purge remove search show update upgrade
+            case history list search show 
                 nala $argv
+            case autopurge autoremove clean fetch install purge remove update upgrade
+                sudo nala $argv
             case help
                 nala
             case '*'
