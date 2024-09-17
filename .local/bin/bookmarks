@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Define the websites and their URLs
+options=$(grep -o '[^-]<a.*>' ~/.librewolf/homepage/index.html | grep -oP 'href="\K[^"]+|>([^<]+)' | sed 's/^>//' | awk 'NR%2{printf "%s ", $0; next} {print $0}')
+
+# Extract only the names for dmenu
+names=$(echo "$options" | awk '{for (i=2; i<=NF; i++) printf "%s ", $i; print ""}' | sed 's/[[:space:]]*$//')
+
+# Use dmenu to present the options
+selected=$(echo "$names" | dmenu -i -p "Select a website:")
+
+# Check if the user pressed Escape (selected will be empty)
+if [ -z "$selected" ]; then
+    exit 0  # Exit gracefully if Escape was pressed
+fi
+
+# Get the corresponding URL based on the selected name
+url=$(echo "$options" | grep "$selected" | awk '{print $1}')
+
+# Open the selected URL in Firefox
+if [ -n "$url" ]; then
+    $BROWSER "$url"
+fi
+
