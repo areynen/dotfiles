@@ -1,7 +1,7 @@
 #!/bin/sh
-title=$(mpc current)
+title=$(mpc current 2> /dev/null)
 #progress=$(mpc status | head -2 | tail -1 | awk '{print $3}')
-status=$(mpc status | head -2 | tail -1 | awk '{print $1}')
+status=$(mpc status 2> /dev/null | head -2 | tail -1 | awk '{print $1}')
 TERMINAL=st
 
 

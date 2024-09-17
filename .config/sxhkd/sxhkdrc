@@ -1,3 +1,5 @@
+#super + shift + control + alt + l
+#    librewolf "linkedin.com"
 super + F12
     macropad.sh
 super + Return 
@@ -5,7 +7,7 @@ super + Return
 super + { ,shift} + z 
     $BROWSER { ,--private-window}
 super + alt + { ,shift} + z
-    chromium { ,--incognito}
+    brave-browser { ,--incognito}
 super + control + z
     searchcopied
 super + alt + q
@@ -22,16 +24,22 @@ super + d
     dmenu_run
 super + v
     clipmenu -i -l 20
+super + shift + v
+    sleep 0.5 && xdotool type "$(xclip -selection clipboard -o)"
 super + c
-    consume -s -d -f $HOME/.local/bin/to_consume.txt
-super + shift + c
-    consume -f $HOME/.local/bin/to_consume_long.txt
-super + shift + t
+    bookmarks
+#super + c
+    #consume -s -d -f $HOME/.local/bin/to_consume.txt
+#super + shift + c
+    #consume -f $HOME/.local/bin/to_consume_long.txt
+#super + shift + t
     $TERMINAL -c "ranger" -e ranger
 super + q 
     $TERMINAL -c "htop" -e htop
-super + {_,shift} + m
-    {$TERMINAL -c "neomutt" -e neomutt, updatemail.sh}
+super + m
+    thunderbird
+#super + {_,shift} + m
+#    {$TERMINAL -c "neomutt" -e neomutt, updatemail.sh}
 super + {_,shift} + u
     {$TERMINAL -c "ncmpcpp" -e ncmpcpp,ario}
 super + p

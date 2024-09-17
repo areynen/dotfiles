@@ -11,11 +11,12 @@ alias mv='mv -i'
 
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias confighidden='/usr/bin/git --git-dir=$HOME/.cfg_hidden/ --work-tree=$HOME'
-alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
+#alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
 
 alias l="ls -alh"
 alias code="codium"
 
+alias python=python3
 alias vi3=vim\ ~/.config/i3/config
 alias vzsh=vim\ ~/.zshrc
 alias vdwm=vim\ ~/Documents/dwm/config.h
@@ -29,11 +30,11 @@ alias vnvim=vim\ ~/.config/nvim/init.vim
 alias vurls=vim\ ~/.config/newsboat/urls
 alias vnews=vim\ ~/.config/newsboat/config
 alias vxrdb=vim\ ~/.Xresources
-alias vtc=vim\ ~/.local/bin/to_consume.txt
-alias vtcl=vim\ ~/.local/bin/to_consume_long.txt
-alias cq=code\ ~/.config/newsboat/RSSQueryMaker.txt
-alias cqn=code\ ~/.config/newsboat/RSSQueryMakerNyaa.txt
-alias cqfs=code\ ~/.config/newsboat/RSSQueryMakerNyaaFS.txt
+#alias vtc=vim\ ~/.local/bin/to_consume.txt
+#alias vtcl=vim\ ~/.local/bin/to_consume_long.txt
+#alias cq=code\ ~/.config/newsboat/RSSQueryMaker.txt
+#alias cqn=code\ ~/.config/newsboat/RSSQueryMakerNyaa.txt
+#alias cqfs=code\ ~/.config/newsboat/RSSQueryMakerNyaaFS.txt
 alias mpv480="mpv --sid=no --ytdl-format='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
 alias mpv360="mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
 alias ytfzf480="ytfzf --ytdl-pref='bestvideo[height<=480][fps<=?30]+bestaudio/best'"

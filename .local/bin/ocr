@@ -21,16 +21,16 @@ for dependency in "${dependencies[@]}"; do
 done
 
 # location for tesseract eng file (at least on arch)
-ENGFILE="/usr/share/tessdata/eng.traineddata" 
-if ! [ -f $ENGFILE ]; then
-    echo "Language file not found for tesseract, Download and move the file? [Y/n]"
-    read TESSINPUT
-    if [ $TESSINPUT = "N" ] || [ $TESSINPUT = "n" ] ; then
-        echo "Exiting..."
-        exit 1
-    fi
-    sudo wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata -P /usr/share/tessdata
-fi
+#ENGFILE="/usr/share/tessdata/eng.traineddata" 
+#if ! [ -f $ENGFILE ]; then
+#    echo "Language file not found for tesseract, Download and move the file? [Y/n]"
+#    read TESSINPUT
+#    if [ $TESSINPUT = "N" ] || [ $TESSINPUT = "n" ] ; then
+#        echo "Exiting..."
+#        exit 1
+#    fi
+#    sudo wget https://github.com/tesseract-ocr/tessdata/raw/master/eng.traineddata -P /usr/share/tessdata
+#fi
 
 # Take screenshot by selecting the area
 maim -s "$IMAGE_FILE"
