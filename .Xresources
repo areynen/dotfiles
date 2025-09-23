@@ -44,7 +44,6 @@ URxvt.matcher.button: 1
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.clipboard.autocopy: true
-Xcursor.size: 16
 
 *.background: #282828
 *.foreground: #d4be98
@@ -54,6 +53,9 @@ Xcursor.size: 16
 
 *.cursor: #a89984
 *.cursor_text_color: background
+
+
+Xcursor.size: 16
 
 ! Black
 *.color0: #282828

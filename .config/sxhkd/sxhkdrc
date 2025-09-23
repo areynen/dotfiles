@@ -7,7 +7,7 @@ super + Return
 super + { ,shift} + z 
     $BROWSER { ,--private-window}
 super + alt + { ,shift} + z
-    brave-browser { ,--incognito}
+    mullvad-browser { ,--incognito}
 super + control + z
     searchcopied
 super + alt + q
@@ -26,8 +26,8 @@ super + v
     clipmenu -i -l 20
 super + shift + v
     sleep 0.5 && xdotool type "$(xclip -selection clipboard -o)"
-super + c
-    bookmarks
+super + {_,shift} + c
+    bookmarks { ,--new}
 #super + c
     #consume -s -d -f $HOME/.local/bin/to_consume.txt
 #super + shift + c

@@ -1,15 +1,12 @@
 #!/bin/sh
+pgrep -x thunar >/dev/null || thunar --daemon &
 # Polkit
 pgrep -x lxpolkit >/dev/null || lxpolkit &
-# Wallpaper
-# feh --bg-scale ~/Pictures/wallpaper_new.png &
-sleep 1 & hsetroot -solid "#282828"
-# Setting screens
-~/.screenlayout/dual-offset-home.sh
 # Theme
 # wal --theme ~/theme >/dev/null
+# screensaver
+# pregp -x xscreensaver >/dev/null || xscreensaver --no-splash &
 # dwmc xrdb
-xrdb ~/.Xresources
 # Picom compositor
 pgrep -x picom >/dev/null || picom &
 # Dunst notifcations
@@ -37,7 +34,7 @@ mopidy &
 # pgrep -x mpdscribble >/dev/null || mpdscribble &
 # Unclutter to remove the mouse Top is arch, 2nd is debian
 #pgrep -x unclutter >/dev/null || unclutter --jitter 1 --ignore-scrolling &
-pgrep -x unclutter >/dev/null || unclutter -jitter 1 -ide 3 &
+pgrep -x unclutter >/dev/null || unclutter -jitter 1 -ignore-scrolling &
 # Stop PC Beep
 xset -b &
 xmodmap ~/.xmodmaprc &

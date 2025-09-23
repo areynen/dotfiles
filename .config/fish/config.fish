@@ -9,6 +9,8 @@ alias cp="cp -i"
 alias rm="rm -i"
 alias mv='mv -i'
 
+alias winevd="WINEDEBUG=-all WINEPREFIX=~/.wine wine explorer /desktop=MyDesktop,1920x1080"
+
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias confighidden='/usr/bin/git --git-dir=$HOME/.cfg_hidden/ --work-tree=$HOME'
 #alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
@@ -22,6 +24,7 @@ alias vzsh=vim\ ~/.zshrc
 alias vdwm=vim\ ~/Documents/dwm/config.h
 alias vhk=vim\ ~/.config/sxhkd/sxhkdrc
 #alias vvim=vim\ ~/.vimrc
+alias vbm=vim\ ~/.librewolf/homepage/index.html
 alias vvim=vim\ ~/.config/nvim/init.vim
 alias vdunst=vim\ ~/.config/dunst/dunstrc
 alias vmpv=vim\ ~/.config/mpv/mpv.conf
@@ -125,14 +128,15 @@ set BROWSER "librewolf"
 set SUDO_ASKPASS "dmenupass.sh"
 export EDITOR "nvim"
 export VISUAL "nvim"
-export TERMINAL "st"
+export TERMINAL "kitty"
+#export TERMINAL "st"
 export FILE_BROWSER "thunar"
 # export BROWSER "firefox"
 export BROWSER "librewolf"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export SUDO_ASKPASS="dmenupass.sh"
 
-set PATH $PATH /home/alex/Documents/scripts /home/alex/.emacs.d/bin /home/alex/.local/bin /home/alex/.screenlayout /home/alex/.local/share/bob/nvim-bin
+set PATH $PATH /home/alex/Documents/scripts /home/alex/.emacs.d/bin /home/alex/.local/bin /home/alex/.screenlayout /home/alex/.local/share/bob/nvim-bin /home/alex/source/.executables/
 
 switch $TERM
     case 'st-*' # suckless' simple terminal

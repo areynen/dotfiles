@@ -1,24 +1,43 @@
 #!/bin/bash
 
-# Define the websites and their URLs
-options=$(grep -o '[^-]<a.*>' ~/.librewolf/homepage/index.html | grep -oP 'href="\K[^"]+|>([^<]+)' | sed 's/^>//' | awk 'NR%2{printf "%s ", $0; next} {print $0}')
+# When shift is used
+new_window=false
 
-# Extract only the names for dmenu
-names=$(echo "$options" | awk '{for (i=2; i<=NF; i++) printf "%s ", $i; print ""}' | sed 's/[[:space:]]*$//')
+for arg in "$@"; do
+    if [ "$arg" = "--new" ]; then
+        new_window=true
+    fi
+done
 
-# Use dmenu to present the options
-selected=$(echo "$names" | dmenu -i -p "Select a website:")
+#websites=$(grep -o '[^-]<a.*>' ~/.librewolf/homepage/index.html | grep -oP 'href="\K[^"]+|>([^<]+)' | sed 's/^>//' | awk 'NR%2{printf "%s ", $0; next} {print $0}')
+websites=$(grep -o '<a.*/a>' ~/.librewolf/homepage/index.html | grep -oP 'href="\K[^"]+|>([^<]+)' | sed 's/^>//' | awk 'NR%2{printf "%s ", $0; next} {print $0}')
 
-# Check if the user pressed Escape (selected will be empty)
+names=$(echo "$websites" | awk '{for (i=2; i<=NF; i++) printf "%s ", $i; print ""}' | sed 's/[[:space:]]*$//')
+
+selected=$(echo "$names" | dmenu -i -p "Select or Search:")
+
+# ESC
 if [ -z "$selected" ]; then
-    exit 0  # Exit gracefully if Escape was pressed
+    exit 0
 fi
 
-# Get the corresponding URL based on the selected name
-url=$(echo "$options" | grep "$selected" | awk '{print $1}')
+# Map name to url
+url=$(echo "$websites" | grep "$selected" | head -1 | awk '{print $1}')
 
-# Open the selected URL in Firefox
+# Open in browser
 if [ -n "$url" ]; then
-    $BROWSER "$url"
-fi
+    if [ "$new_window" = false ]; then
+        $BROWSER --new-tab "$url"
+    else
+        $BROWSER --new-window "$url"
+    fi
+else
 
+    if [ "$new_window" = false ]; then
+        $BROWSER --new-tab "https://paulgo.io/search?q=$selected"
+        #$BROWSER --new-tab "https://duckduckgo.com/?q=$selected"
+    else
+        $BROWSER --new-window "https://paulgo.io/search?q=$selected"
+        #$BROWSER --new-window "https://duckduckgo.com/?q=$selected"
+    fi
+fi
