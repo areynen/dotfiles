@@ -40,8 +40,10 @@ super + m
     thunderbird
 #super + {_,shift} + m
 #    {$TERMINAL -c "neomutt" -e neomutt, updatemail.sh}
-super + {_,shift} + u
-    {$TERMINAL -c "ncmpcpp" -e ncmpcpp,ario}
+super + u
+    supersonic
+#super + {_,shift} + u
+    #{$TERMINAL -c "ncmpcpp" -e ncmpcpp,ario}
 super + p
     passmenu-otp
 super + {_,shift} + n 
@@ -54,10 +56,14 @@ super + {_,shift,control,alt} +  s
     {screenshot_selected,screenshot_full,ocr,openlatest}  
 super + shift + alt + s
     openlatest -s
+#super + alt + {Down,Left,Right}
+    #mpc {toggle,prev,next}; blocks_update 2
 super + alt + {Down,Left,Right}
-    mpc {toggle,prev,next}; blocks_update 2
+    playerctl --player=Supersonic {play-pause,previous,next}; blocks_update 2
 super + alt + shift + {Left,Right,Down}
-    mopidy_vol {-5,+5,50}
+    playerctl --player=Supersonic volume {0.05-,0.05+,0.5}
+#super + alt + shift + {Left,Right,Down}
+    #mopidy_vol {-5,+5,50}
 super + alt + shift + Up
     mpcnotify.sh
 super + alt + Up

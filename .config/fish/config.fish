@@ -46,24 +46,6 @@ alias cx=chmod\ +x
 #alias yay=paru
 #alias reflect="sudo reflector --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 
-function yay
-    if test (count $argv) -eq 0
-        sudo nala upgrade
-    else
-        set cmd $argv[1]
-        switch $cmd
-            case history list search show 
-                nala $argv
-            case autopurge autoremove clean fetch install purge remove update upgrade
-                sudo nala $argv
-            case help
-                nala
-            case '*'
-                sudo nala install $argv
-        end
-    end
-end
-
 function ex
   set ext zip rar bz2 gz tar tbz2 tgz Z 7z xz exe tar.bz2 tar.gz tar.xz lzma cbz
   if test -z "$argv"

@@ -30,7 +30,8 @@ pgrep -x clipmenud >/dev/null || clipmenud &
 pgrep -x sxhkd >/dev/null || sxhkd &
 # MPD
 # mpd &
-mopidy &
+#mopidy &
+#supersonic
 # pgrep -x mpdscribble >/dev/null || mpdscribble &
 # Unclutter to remove the mouse Top is arch, 2nd is debian
 #pgrep -x unclutter >/dev/null || unclutter --jitter 1 --ignore-scrolling &
