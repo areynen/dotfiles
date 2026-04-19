@@ -18,8 +18,8 @@ bookmark-interactive yes
 
 
 urls-source "freshrss"
-freshrss-url "http://192.168.1.165:8280/api/greader.php"
-#freshrss-url "https://fresh.reynen.xyz/api/greader.php"
+#freshrss-url "http://192.168.1.165:8280/api/greader.php"
+freshrss-url "https://fresh.reynen.xyz/api/greader.php"
 freshrss-login "alex"
 freshrss-passwordfile "/home/alex/.config/newsboat/freshrss-password"
 freshrss-show-special-feeds no

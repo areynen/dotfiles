@@ -43,6 +43,7 @@ alias mpv360="mpv --sid=no --ytdl-format='bestvideo[height<=360][fps<=?30]+besta
 alias ytfzf480="ytfzf --ytdl-pref='bestvideo[height<=480][fps<=?30]+bestaudio/best'"
 alias ytfzf360="ytfzf --ytdl-pref='bestvideo[height<=360][fps<=?30]+bestaudio/best'"
 alias cx=chmod\ +x
+alias peaclock="peaclock --config-dir /home/alex/.config/peaclock/"
 #alias yay=paru
 #alias reflect="sudo reflector --country US --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 

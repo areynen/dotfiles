@@ -1,101 +1,41 @@
-# Path to your oh-my-zsh installation.
-export ZSH="/home/alex/.oh-my-zsh"
+# Set up the prompt
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+autoload -Uz promptinit
+promptinit
+prompt adam1
 
-plugins=(git
-	zsh-syntax-highlighting
-   	zsh-autosuggestions
-	)
+setopt histignorealldups sharehistory
 
-source $ZSH/oh-my-zsh.sh
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
 
-eval $(thefuck --alias)
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
 
-# Binding alt arrows to l/r word
-# urxvt
-bindkey "\e$terminfo[kcub1]" backward-word
-bindkey "\e$terminfo[kcuf1]" forward-word
-# ST
-bindkey "^[[1;3D" backward-word
-bindkey "^[[1;3C" forward-word
+# Use modern completion system
+autoload -Uz compinit
+compinit
 
-# Aliases
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-alias ..="cd .."
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
 
-alias cp="cp -i"
-alias rm="rm -i"
-alias mv='mv -i'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-alias config='/usr/bin/git --git-dir=/home/alex/dotfiles/ --work-tree=/home/alex'
-alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
-
-alias vi3=vim\ ~/.config/i3/config
-alias vzsh=vim\ ~/.zshrc
-alias vdwm=vim\ ~/Documents/dwm/config.h
-alias vhk=vim\ ~/.config/sxhkd/sxhkdrc
-alias vvim=vim\ ~/.vimrc
-
-# Functions
-# ex - archive extractor
-# usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf $1   ;;
-      *.tar.gz)    tar xzf $1   ;;
-      *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
-      *.gz)        gunzip $1    ;;
-      *.tar)       tar xf $1    ;;
-      *.tbz2)      tar xjf $1   ;;
-      *.tgz)       tar xzf $1   ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1;;
-      *.7z)        7z x $1      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
-}
-exprop()
-{
-xprop | awk '
-    /^WM_CLASS/{sub(/.* =/, "instance:"); sub(/,/, "\nclass:"); print}
-    /^WM_NAME/{sub(/.* =/, "title:"); print}'
-}
-
-# Exports
-export EDITOR=vim
-export VISUAL=vim
-export TERMINAL=st
-export FILE_BROWSER=thunar
-export BROWSER=firefox
-export _JAVA_AWT_WM_NONREPARENTING=1
-
-# Path modifications
-export PATH=$PATH:/home/alex/Documents/scripts
-
-# On term Start
-#clear
-pfetch
-
-# For Z
-[[ -r /usr/share/z/z.sh ]] && source /usr/share/z/z.sh
-
-export LESS_TERMCAP_mb=$'\e[1;32m'
-export LESS_TERMCAP_md=$'\e[1;32m'
-export LESS_TERMCAP_me=$'\e[0m'
-export LESS_TERMCAP_se=$'\e[0m'
-export LESS_TERMCAP_so=$'\e[01;33m'
-export LESS_TERMCAP_ue=$'\e[0m'
-export LESS_TERMCAP_us=$'\e[1;4;31m'
-
+antigen use oh-my-zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply

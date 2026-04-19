@@ -34,10 +34,10 @@ if [ -n "$url" ]; then
 else
 
     if [ "$new_window" = false ]; then
-        $BROWSER --new-tab "https://paulgo.io/search?q=$selected"
-        #$BROWSER --new-tab "https://duckduckgo.com/?q=$selected"
+        #$BROWSER --new-tab "https://paulgo.io/search?q=$selected"
+        $BROWSER --new-tab "https://duckduckgo.com/?q=$selected"
     else
-        $BROWSER --new-window "https://paulgo.io/search?q=$selected"
-        #$BROWSER --new-window "https://duckduckgo.com/?q=$selected"
+        #$BROWSER --new-window "https://paulgo.io/search?q=$selected"
+        $BROWSER --new-window "https://duckduckgo.com/?q=$selected"
     fi
 fi

@@ -20,6 +20,8 @@ super + w
     jdownloader
 super + t
     thunar 
+super + {shift,alt} + d
+    {lutris-dmenu,mmc_launcher}
 super + d
     dmenu_run
 super + v
@@ -44,8 +46,10 @@ super + u
     supersonic
 #super + {_,shift} + u
     #{$TERMINAL -c "ncmpcpp" -e ncmpcpp,ario}
-super + p
-    passmenu-otp
+super + {_,shift,alt} + p
+    rbw-menu {password,username,code}
+#super + p
+    #passmenu-otp
 super + {_,shift} + n 
     {$TERMINAL -c "newsboat" -e newsboat}
 super + shift + alt + o
