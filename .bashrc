@@ -149,7 +149,6 @@ function _update_ps1() {
 #pfetch
 
  VISUAL=vim; export VISUAL EDITOR=vim; export EDITOR
- alias config='/usr/bin/git --git-dir=/home/alex/dotfiles/ --work-tree=/home/alex'
  alias "xshoursay"="xcowsay --image=/usr/share/xcowsay/shour.png --bubble-at=-75,-65"
 
 
