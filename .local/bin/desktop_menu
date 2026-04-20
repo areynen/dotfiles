@@ -1,0 +1,9 @@
+#!/bin/bash
+
+xmenu <<EOF | sh &
+Applications
+	Librewolf	librewolf
+	GIMP	gimp
+
+Terminal (st)		st
+EOF
