@@ -4,6 +4,7 @@ pgrep -x thunar >/dev/null || thunar --daemon &
 pgrep -x lxpolkit >/dev/null || lxpolkit &
 # Theme
 # wal --theme ~/theme >/dev/null
+hsetroot -solid "#282828"
 # screensaver
 # pregp -x xscreensaver >/dev/null || xscreensaver --no-splash &
 # dwmc xrdb

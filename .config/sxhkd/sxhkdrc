@@ -16,8 +16,6 @@ super + shift + alt + q
     kill_current
 super + g
     gimp
-super + w
-    jdownloader
 super + t
     thunar 
 super + {shift,alt} + d
@@ -35,7 +33,7 @@ super + {_,shift} + c
 #super + shift + c
     #consume -f $HOME/.local/bin/to_consume_long.txt
 #super + shift + t
-    $TERMINAL -c "ranger" -e ranger
+#    $TERMINAL -c "ranger" -e ranger
 super + q 
     $TERMINAL -c "htop" -e htop
 super + m
@@ -80,8 +78,8 @@ XF86AudioMute
     {$FILES, $TERMINAL -c "ranger" -e ranger}
 XF86Calculator
     galculator
-XF86Mail
-    $TERMINAL -c "neomutt" -e neomutt
+#XF86Mail
+#    $TERMINAL -c "neomutt" -e neomutt
 { ,shift} + XF86HomePage
     $BROWSER { ,--private-window}
 super + {shift,control} + grave
