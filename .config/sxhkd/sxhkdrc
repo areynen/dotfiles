@@ -67,15 +67,15 @@ super + alt + shift + {Left,Right,Down}
 #super + alt + shift + {Left,Right,Down}
     #mopidy_vol {-5,+5,50}
 super + alt + shift + Up
-    mpcnotify.sh
+    supersonicnotify.sh
 super + alt + Up
     pavucontrol
 {_,shift} + XF86Audio{Lower,Raise}Volume
     pactl set-sink-volume @DEFAULT_SINK@ {-5,-1,+5,+1}%
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
-{_,shift} + XF86Explorer
-    {$FILES, $TERMINAL -c "ranger" -e ranger}
+#{_,shift} + XF86Explorer
+#    {$FILES, $TERMINAL -c "ranger" -e ranger}
 XF86Calculator
     galculator
 #XF86Mail
