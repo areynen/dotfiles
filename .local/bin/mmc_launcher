@@ -1,0 +1,16 @@
+#!/bin/sh
+
+MMC_DIR="/home/alex/.local/share/ElyPrismLauncher"
+MINECRAFT_BIN="minecraft"
+DMENU="dmenu -i -p Minecraft -l 10"
+
+instances=$(for dir in "$MMC_DIR"/instances/*; do
+    cfg="$dir/instance.cfg"
+    if [ -f "$cfg" ]; then
+        grep -m1 '^name=' "$cfg" | cut -d= -f2-
+    fi
+done)
+
+selected=$(echo "$instances" | $DMENU)
+
+[ -n "$selected" ] && $MINECRAFT_BIN -l "$selected"
