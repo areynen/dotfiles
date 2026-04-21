@@ -1,0 +1,15 @@
+#!/bin/sh
+
+blocks_program="dwmblocks"
+
+#if (pgrep -x dwm)
+#then
+#    blocks_program="dwmblocks"
+#elif (pgrep -x i3)
+#then
+#    blocks_program="i3blocks"
+#else
+#    exit
+#fi
+#notify-send $blocks_program
+pkill -RTMIN+$1 $blocks_program
