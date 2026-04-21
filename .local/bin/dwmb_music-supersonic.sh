@@ -23,7 +23,7 @@ case "$status" in
 esac
 
 case $BLOCK_BUTTON in
-    1) supersonic ;;
+    1) supersonic-desktop ;;
     2) playerctl --player=Supersonic play-pause && $HOME/.local/bin/blocks_update 2;;
     #2) mpc toggle && $HOME/.local/bin/blocks_update 2;;
     3) $HOME/.local/bin/supersonicnotify.sh ;;

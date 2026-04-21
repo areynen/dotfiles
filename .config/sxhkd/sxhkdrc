@@ -41,7 +41,7 @@ super + m
 #super + {_,shift} + m
 #    {$TERMINAL -c "neomutt" -e neomutt, updatemail.sh}
 super + u
-    supersonic
+    supersonic-desktop
 #super + {_,shift} + u
     #{$TERMINAL -c "ncmpcpp" -e ncmpcpp,ario}
 super + {_,shift,alt} + p
